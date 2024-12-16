@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-2</title>
+    <link rel="stylesheet" href="form-2.css">
+</head>
+
+<body>
+    <div class="form">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; ">Create Account</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="fonts"><label for="firstname">First Name*</label></span><br><input type="text"
+                            id="firstname" placeholder="Enter your first name"></td>
+                    <td><span class="fonts"><label for="lastname">Last Name</label></span><br><input type="text"
+                            id="lastname" placeholder="Enter your last name"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="fonts"><label for="email">Email*</label></span><br><input type="email"
+                            id="email" placeholder="Enter your email"></td>
+                </tr>
+                <tr>
+                    <td><span class="fonts"><label for="password">Password*</label></span><br><input type="password"
+                            id="password" placeholder="Enter your rpassword">
+                    </td>
+                    <td><span class="fonts"><label for="cnf_password">Confirm Password*</label></span><br><input
+                            type="password" id="password" name="cnf_password" placeholder="Enter your password again">
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="fonts"><label for="gender">Gender:</label></span><br><input type="radio"
+                            id="gender">Male <input type="radio" id="gender">Female</td>
+                    <td><span class="fonts"><label for="hobbies">Hobbies:</label></span><br>
+                        <input type="checkbox" name="hobbies" id="music">Music <input type="checkbox" name="hobbies">Sports
+                        <input type="checkbox" name="hobbies">Travel <input type="checkbox" name="hobbies">Movies
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="fonts"><label for="dd">Source of Income</label></span><br>
+                        <select id="dd">
+                            <option value="select">--select--</option>
+                            <option value="option-1">Employed</option>
+                            <option value="option-2">Unemployed</option>
+                        </select>
+                    </td>
+                    <td><span class="fonts"><label for="income">Income</label></span><br>
+                    <input type="range" id="income" min="0" max="20000" step="1000"><span class="sidevalue">20K </span></td>
+                </tr>
+                <tr>
+                    <td><span class="fonts"><label for="file">Upload Profile Picture</label></span><br>
+                    <input type="file" id="file" accept=".png .jpg .jpeg"></td>
+                    <td><span class="fonts"><label for="age">Age</label></span><br>
+                    <input type="number" id="age"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="fonts"><label for="bio">Bio</label></span><br>
+                    <textarea id="bio" rows="4" cols="60"></textarea>
+                </tr>
+                <tr class="footer">
+                    <td colspan="2"><input type="button" class="button" value="Create"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
