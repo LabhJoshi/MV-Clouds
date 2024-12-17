@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations</title>
+    <style>
+        .container-1 {
+            max-width: 700px;
+            background-color: pink;
+            padding: 20px;
+        }
+
+        .inner-div-1 {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            position: relative;
+            top: 0;
+        }
+
+        .container-1 .inner-div-1{
+            cursor: pointer;
+            animation-name: move-right-left;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes move-right-left {
+            0% {
+                top: 0%;
+                left: 0%;
+            }
+        
+            100% {
+                top: 0%;
+                left: 85%;
+            }
+        }
+
+        .container-2{
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .container-2:hover{
+            cursor: pointer;
+            animation-name: bounce;
+            animation-duration: 3s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100%, 20%, 50%, 80%{
+                transform: translateY(0);
+            }
+            40%{
+                transform: translateY(-15px);
+            }
+            60%{
+                transform: translateY(-25px);
+            }
+        }
+
+        .container-3{
+            height: 400px;
+            width: 400px;
+            background-color: plum;
+        }
+
+        .inner-div-2 {
+            position: relative;
+            top: 25%;
+            left: 25%;
+            width: 200px;
+            height: 200px;
+            background-color: coral;
+            animation: squareToCircle 2s 1s infinite alternate;
+            animation-name: squareToCircle;
+            animation-duration: 2s;
+            animation-delay: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+          
+          @keyframes squareToCircle {
+              0% {
+                border-radius: 0 0 0 0;
+                background: coral;
+                transform: rotate(0deg);
+              }
+              25% {
+                border-radius: 50% 0 0 0;
+                background: darksalmon;
+                transform: rotate(45deg);
+              }
+              50% {
+                border-radius: 50% 50% 0 0;
+                background: indianred;
+                transform: rotate(90deg);
+              }
+              75% {
+                border-radius: 50% 50% 50% 0;
+                background: lightcoral;
+                transform: rotate(135deg);
+              }
+              100% {
+                border-radius: 50% 50% 50% 50%;
+                background: darksalmon;
+                transform: rotate(180deg);
+              }
+          }
+
+    </style>
+</head>
+
+<body>
+    <h1>Animation-1</h1>
+    <div class="container-1">
+        <div class="inner-div-1">
+        </div>
+    </div>
+
+    <h1>Animation-2</h1>
+    <div class="container-2">
+    </div>
+
+    <h1>Animation-3</h1>
+    <div class="container-3">
+        <div class="inner-div-2"></div>
+    </div>
+</body>
+</html>
