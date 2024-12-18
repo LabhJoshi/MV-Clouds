@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count number of Vowels</title>
+</head>
+<body>
+    <label for="input">Enter string: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        var str=document.getElementById('input').value;
+        var regex=/[aeiou]/;
+        var count=0;
+
+        for(let i=0;i<str.length;i++){
+            if(str[i].match(regex)){
+                count++;
+            }
+        }
+
+        alert("Number of vowels in given string: "+count);
+    })
+</script>
+</html>

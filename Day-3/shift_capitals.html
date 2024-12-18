@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shif capital letters to the front</title>
+</head>
+
+<body>
+    <label for="input">Enter string: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const shiftCaps = (str) => {
+            var fs = '';
+            var regex = /[A-Z]/g;
+
+            fs=str.match(regex).toString().replaceAll(',','');
+            str=str.replace(/[A-Z]/g,'');
+
+            return fs+str;
+        };
+
+        var str = document.getElementById('input').value;
+        alert("Final string: " + shiftCaps(str));
+
+    })
+</script>
+
+</html>

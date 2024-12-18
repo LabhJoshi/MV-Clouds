@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right shift of given number</title>
+</head>
+<body>
+    <label for="input-1">Enter number: </label><input type="number" name="input" id="input-1"><br>
+    <label for="input-2">Enter shifting digit: </label><input type="number" name="input" id="input-2">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        var n = document.getElementById('input-1').value;
+        var s = document.getElementById('input-2').value;
+        var p = Math.pow(2,s);
+        var shifted_digit=Math.floor(n/p);
+
+        alert("Shifted digit: "+shifted_digit);
+    });
+</script>
+</html>

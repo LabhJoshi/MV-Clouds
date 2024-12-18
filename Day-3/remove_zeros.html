@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove leading and trailing zeros</title>
+</head>
+
+<body>
+    <label for="input">Enter number: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const removeLeadingTrailing = (num) => {
+            var regex=/^0+(?=\d)|(\.\d*?)0+$/g;
+
+            return num.replace(regex,'');
+        };
+
+        var n = document.getElementById('input').value;
+        alert("Number after removing zeroes: "+removeLeadingTrailing(n));
+    })
+</script>
+</html>

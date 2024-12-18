@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highest and Lowest numbers</title>
+</head>
+<body>
+    <label for="input">Enter numbers with space-seprated: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        var input=document.getElementById('input').value;
+        var numbers=input.split(' ').sort();
+
+        var lowest=numbers[0];
+        var highest=numbers[numbers.length-1];
+
+
+
+        alert("Highest and lowest values: "+highest+" "+lowest);
+    })
+</script>
+</html>

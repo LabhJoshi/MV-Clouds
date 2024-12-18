@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contains 'ee'</title>
+</head>
+
+<body>
+    <label for="input">Enter string: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        var str = document.getElementById('input').value;
+        var ee = 'ee';
+        var next = '';
+        var flag = false;
+
+        for (i = 0; i < str.length; i++) {
+            if (i == str.length - 1) {
+                next = str[0];
+            }
+            next = str[i + 1]
+            if (str[i] + next == ee) {
+                flag = true;
+            }
+        }
+        if (flag) {
+            alert(str + " contains ee.");
+        }
+        else {
+            alert(str + " does not contains ee.");
+        }
+    });
+</script>
+
+</html>

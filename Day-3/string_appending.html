@@ -1,0 +1,26 @@
+<!-- Write a JavaScript function that returns the string with "something" appended with a space " " to the given string value. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Appending</title>
+</head>
+<body>
+    <label for="input">Enter string: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        var str = document.getElementById('input').value;
+        var to_be_appended = " something";
+
+        var final_string = str+to_be_appended;
+
+        alert("Output string: "+final_string)
+    });
+</script>
+</html>
