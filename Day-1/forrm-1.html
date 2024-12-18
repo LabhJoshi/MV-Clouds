@@ -4,18 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form-1</title>
+    <style>
+        .container{
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+
 </head>
 <body>
-    <form action="#">
-        <label for="username">Username: </label><input type="text" name="username" required><br><br>
-        <label for="password">Password: </label><input type="password" name="password" required><br><br>
-        Gender: <input type="radio" name="gender" value="male"> Male <input type="radio" name="gender" value="female"> Female <br><br>
-        Dropdown Menu: <select name="dropdown" id="menu-1">
-            <option value="select">--select--</option>
-            <option value="option-1">Option-1</option>
-            <option value="option-2">Option-2</option>
-        </select> <br><br> 
-        <button type="button">Submit</button>
-    </form>
+    <div class="container">
+        <form>
+            <label for="username">Username: </label><input type="text" name="username" id="username" required><br><br>
+            <label for="password">Password: </label><input type="password" name="password" id="password" required><br><br>
+            Gender: <input type="radio" name="gender" class="gender" value="male"> Male <input type="radio" name="gender" class="gender" value="female"> Female <br><br>
+            Dropdown Menu: <select id="option" name="dropdown" id="menu-1">
+                <option value="select">--select--</option>
+                <option value="option-1">Option-1</option>
+                <option value="option-2">Option-2</option>
+            </select> <br><br>
+            <input type="submit" id="submit">
+        </form>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyArCQo39jZRXQfdTPap2XIiqh-IGBi2DuY",
+          authDomain: "internship-task-a3e2c.firebaseapp.com",
+          projectId: "internship-task-a3e2c",
+          storageBucket: "internship-task-a3e2c.firebasestorage.app",
+          messagingSenderId: "213022577514",
+          appId: "1:213022577514:web:57a2b4a96bc91b598b0b13"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    
+        const db = getDatabase(app);
+        
+        
+        document.getElementById('submit').addEventListener('click', (e)=>{
+
+            e.preventDefault();
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var gender = document.querySelector("input[name='gender']:checked").value;
+            var option = document.getElementById("option").value;
+            console.log(username,password);
+
+            set(ref(db, 'user/' + document.getElementById('username').value),{
+                username: username,
+                password: password,
+                gender: gender,
+                option: option
+            });
+            alert("Login Successfull !!!");
+        })
+    
+      </script>
 </body>
+
 </html>
