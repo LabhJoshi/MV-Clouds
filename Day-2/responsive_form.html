@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form</title>
+    <style>
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            height: 400px;
+            width: 400px;
+            background-color: whitesmoke;
+        }
+
+        form{
+            padding-top: 25%;
+            display: grid;
+            row-gap: 7px;
+        }
+
+        form input{
+            border: 1px solid black;
+        }
+
+        form .submit{
+            margin-top: 30px;
+        }
+
+        label:hover{
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .container{
+                height: 350px;
+                width: 350px;
+            }
+
+            form{
+                padding-top: 20%;
+                display: grid;
+                row-gap: 5px;
+            }
+
+            form .submit{
+                margin-top: 55px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .container{
+                height: 250px;
+                width: 250px;
+            }
+
+            form{
+                padding-top: 15%;
+                display: grid;
+                row-gap: 2px;
+            }
+
+            form .submit{
+                margin-top: 75px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#">
+            <label for="email">Email: </label><input type="email" id="email" placeholder="Enter your email"><br>
+            <label for="password">Password: </label><input type="password" id="password" placeholder="Enter your password">
+            <input type="submit" class="submit">
+        </form>
+    </div>
+</body>
+</html>
