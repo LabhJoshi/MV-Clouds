@@ -1,16 +1,10 @@
-var n='47 20 93 13 45'
+// a=97 and z=122, A=65 and Z=90
 
-// console.log(n.replaceAll(' ',''))
-// console.log(typeof Number('3'))
-n=n.replaceAll(' ',',');
-// console.log(n)
-var numbers=[]
-for(i=0;i<n.length;i++){
-    if(n[i]===','){
-        continue
-    }
-    numbers.push(Number(n[i]));
-}
-console.log(numbers)
-// console.log(numbers.sort((a,b)=>{return a-b}));
+var str="The LitTle MErMaid";
+var next='';
 
+var output=str.split('').sort((a,b)=>{
+    return a.charCodeAt(0)-b.charCodeAt(0);
+}).join('');
+
+console.log(output)

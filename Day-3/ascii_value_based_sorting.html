@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII value based sorting of string</title>
+</head>
+<body>
+    <label for="input">Enter string: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click', (e)=>{
+        e.preventDefault();
+
+        var str=document.getElementById('input').value;
+
+        var output=str.split('').sort((a,b)=>{
+            return a.charCodeAt(0)-b.charCodeAt(0);
+        }).join('');
+
+        alert("Sorted string based on their ASCII value: "+output);
+    })
+</script>
+</html>
