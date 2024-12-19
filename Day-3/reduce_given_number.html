@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce to one digit</title>
+</head>
+<body>
+    <label for="input">Enter numbers with space-seprated: </label><input type="text" name="input" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',()=>{
+        
+        function reduceToOneDigit(input){
+            var numbers=input.split(' ');
+            var sum=0;
+
+            for(let i=0;i<numbers.length;i++){
+                sum+=Number(numbers[i]);
+            }
+
+            while(sum>9){
+                var temp=sum;
+                var m=1;
+
+                while(temp>0){
+                    m*=temp%10;
+                    temp=Math.floor(temp/10);
+                }
+                sum=m;
+            }
+            return sum;
+        }
+        
+        var input=document.getElementById('input').value;
+        alert("Reduced number: "+reduceToOneDigit(input));
+    });
+</script>
+</html>

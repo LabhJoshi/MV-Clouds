@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(240, 240, 240);
+          }
+  
+          .calculator {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            height: 500px;
+            padding: 20px;
+          }
+  
+          .result {
+            width: 93%;
+            height: 50px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px 10px;
+            border: 1px solid rgb(204, 204, 204);
+            background-color: rgb(249, 249, 249);
+            color: rgb(111, 109, 109);
+          }
+  
+          .buttons {
+            margin-top: 15px;
+            margin-left: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+        
+        button {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            font-size: large;
+            border: none;
+            cursor: pointer;
+          }
+        
+        .clear{
+            background-color: rgb(236, 113, 4);
+        }
+  
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" class="result" readonly>
+        <div class="buttons">
+          <button onclick="clearResult()" class="clear">C</button>
+          <button onclick="appendValue('/')">/</button>
+          <button onclick="appendValue('*')">*</button>
+          <button onclick="deleteLast()">←</button>
+          <button onclick="appendValue('7')">7</button>
+          <button onclick="appendValue('8')">8</button>
+          <button onclick="appendValue('9')">9</button>
+          <button onclick="appendValue('-')">-</button>
+          <button onclick="appendValue('4')">4</button>
+          <button onclick="appendValue('5')">5</button>
+          <button onclick="appendValue('6')">6</button>
+          <button onclick="appendValue('+')">+</button>
+          <button onclick="appendValue('1')">1</button>
+          <button onclick="appendValue('2')">2</button>
+          <button onclick="appendValue('3')">3</button>
+          <button onclick="calculate()">=</button>
+          <button onclick="appendValue('0')">0</button>
+          <button onclick="appendValue('.')">.</button>
+        </div>
+      </div>
+
+</body>
+<script>
+    const resultField = document.getElementById("result");
+    resultField.value=0;
+        function appendValue(value) {
+            if(resultField.value=='0'){
+                resultField.value='';
+            }
+            resultField.value += value;
+        }
+        function clearResult(value) {
+            resultField.value = "0";
+        }
+        function deleteLast(value) {
+            resultField.value = resultField.value.slice(0, -1);
+        }
+        function calculate() {
+            try {
+                if (eval(resultField.value)==undefined) {
+                    resultField.value = "0";
+                } else {
+                    resultField.value = eval(resultField.value);
+                }
+            } catch {
+                resultField.value = "Syntax Error";
+            }
+        }
+</script>
+</html>
