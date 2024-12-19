@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seperate consecutive words</title>
+</head>
+<body>
+    <label for="input">Enter number string: </label><input type="text" id="input">
+    <input type="submit" id="submit">
+</body>
+<script>
+    ocument.getElementById('submit').addEventListener('click',()=>{
+        var input=document.getElementById('input').value;
+        var output='';
+
+        for(let i=0;i<n.length;i++){
+            output+=n[i];
+            if(parseInt(n[i])+1!==parseInt(n[i+1])){
+                output+=' ';
+            }
+        }        
+        alert('Seperated numbers: '+output);
+    });
+</script>
+</html>

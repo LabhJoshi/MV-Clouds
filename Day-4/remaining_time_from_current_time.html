@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remaining time from current date to given time</title>
+</head>
+
+<body>
+    <label for="time">Enter time in 'HH:MM:SS' (24 hours format) format: </label><input type="text" id="time">
+    <input type="submit" id="submit">
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click', () => {
+        var input = document.getElementById('time').value;
+        var current_time = new Date();
+        var input = input.split(':');
+
+        // In date object we can pass values in this format: year, month, date, hour, minutes and seconds
+        var target = new Date(current_time.getFullYear(), current_time.getMonth(), current_time.getDate(), Number(input[0]), Number(input[1]), Number(input[2]));
+
+        var diff = target - current_time;
+
+        if (diff < 0) {
+            alert("Time already passed!!!!");
+        }
+        else {
+            var hours = Math.floor(diff / (1000 * 60 * 60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            alert(`Time remaining: ${hours} hours ${minutes} minutes ${seconds} seconds`);
+        }
+    });
+</script>
+
+</html>
