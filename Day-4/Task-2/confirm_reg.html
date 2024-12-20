@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Registration page</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 400px;
+            width: 400px;
+            background-color: rgb(244, 248, 250);
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        h2 {
+            padding-top: 24%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 50px;
+        }
+
+        #yes {
+            background-color: rgb(2, 127, 210);
+            border: none;
+            color: white;
+        }
+
+        #yes:hover {
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            background-color: rgb(8, 100, 161);
+        }
+
+        #no {
+            background-color: rgb(185, 186, 187);
+            border: none;
+            color: white;
+        }
+
+        #no:hover {
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            background-color: rgb(146, 146, 147);
+        }
+
+        button {
+            margin-top: 10%;
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Do you want to confirm your Registration ??</h2><br>
+        <div class="buttons">
+            <button id="yes" onclick="handleYes()">Yes</button><button id="no" onclick="handleNo()">No</button>
+        </div>
+    </div>
+</body>
+<script>
+    function handleYes() {
+        window.location.href = "login.html";
+        alert("Registration confirmed successfully.");
+    }
+
+    function handleNo() {
+        window.location.href = "registration.html";
+        alert("Registration cancelled.");
+    }
+</script>
+
+</html>

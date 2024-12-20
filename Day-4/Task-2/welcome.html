@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            background-color: rgb(239, 194, 194);
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 600px;
+            width: 500px;
+            text-align: center;
+            box-shadow: 1px 1px 5px 1px black;
+        }
+
+        h1 {
+            padding-top: 35%;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 50px;
+            animation: bounce 3s ease-in;
+        }
+
+        @keyframes bounce {
+
+            10%,
+            20%,
+            50%,
+            90% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-200px);
+            }
+
+            60% {
+                transform: translateY(-60px);
+            }
+
+            80% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to our web page.</h1>
+    </div>
+</body>
+
+</html>

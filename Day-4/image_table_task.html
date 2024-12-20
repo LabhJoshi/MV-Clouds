@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Image Table Viewer</h1>
+    <input type="file" id="csv_file">
+    <table id="image_table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('csv_file').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var read = new FileReader();
+                read.onload = function (e) {
+                    var data = e.target.result;
+                    var rows = data.split('\n');
+                    var tablebody = document.getElementById("table_body");
+                    rows.forEach((row,index) => {
+                        var url = row.trim();
+                        if (url) {
+                            console.log("Loading image from URL: " + url);
+                            tablebody.innerHTML +=
+                                `<tr>
+                    <td><img src="${url}" onerror="console.error('Failed to load image: ${url}')"></td>
+                    <td><button onClick="downloadImage('${url}',${index})">Download</button></td>
+                  </tr>`;
+                        }
+                    });
+                };
+                read.readAsText(file);
+            }
+        });
+        async function downloadImage(url,index) {
+            const image = await fetch(url);
+            const imageBlog = await image.blob();
+            const imageURL = URL.createObjectURL(imageBlog);
+
+            const link = document.createElement('a');
+            link.href = imageURL;
+            link.download = `image_${index+1}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
