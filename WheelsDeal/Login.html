@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="infield">
+                    <input type="text" placeholder="Enter Username" name="username" id="username" />
+                    <label></label>
+                </div>
+                <div class="infield">
+                    <input type="email" placeholder="Enter email" name="email" id="sign_up_email" />
+                    <label></label>
+                </div>
+                <div class="infield">
+                    <input type="password" placeholder="Enter Password" id="sign_up_password" />
+                    <label></label>
+                </div>
+                <div class="infield">
+                    <input type="password" placeholder="Confirm Password" id="conf_password" />
+                    <label></label>
+                </div>
+                <button onclick="handleSignUp()">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Sign in</h1>
+                <div class="infield">
+                    <input type="email" placeholder="Enter email" id="sign_in_email" name="email" />
+                    <label></label>
+                </div>
+                <div class="infield">
+                    <input type="password" placeholder="Enter Password" name="password" id="sign_in_password" />
+                    <label></label>
+                </div>
+                <button onclick="handleLogin()">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container" id="overlayCon">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button>Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Newbie!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button>Sign Up</button>
+                </div>
+            </div>
+            <button id="overlayBtn"></button>
+        </div>
+    </div>
+</body>
+<script>
+    const container = document.getElementById('container');
+    const overlayCon = document.getElementById('overlayCon');
+    const overlayBtn = document.getElementById('overlayBtn');
+
+    overlayBtn.addEventListener('click', () => {
+        container.classList.toggle('right-panel-active');
+    });
+
+    async function handleLogin() {
+        var sign_in_email = document.getElementById('sign_in_email').value;
+        var sign_in_password = document.getElementById('sign_in_password').value;
+
+        try {
+            const response = await fetch("http://localhost:5000/api/login");
+            const data = await response.json();
+            console.log(data)
+
+            const user = data.find(user => user.email === sign_in_email);
+
+            if (!user) {
+                alert('No account found. Please sign up first.');
+                return;
+            }
+
+            if (user.password !== sign_in_password) {
+                alert('Incorrect Password, Please try again');
+                return;
+            }
+
+            window.location.href = 'Home.html';
+            localStorage.setItem('email', sign_in_email);
+            alert('Login Successful');
+
+
+        } catch (error) {
+            console.log(error);
+            alert("Error logging in");
+        }
+    }
+
+    async function handleSignUp() {
+        var username = document.getElementById('username').value;
+        var sign_up_email = document.getElementById('sign_up_email').value;
+        var sign_up_password = document.getElementById('sign_up_password').value;
+        var conf_password = document.getElementById('conf_password').value;
+
+        var email_regex = /[0-9a-z._]+@[a-z0-9.-]+\.[a-z]{2,6}/g;
+        var password_regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/g;
+
+        if (!email_regex.test(sign_up_email)) {
+            alert('Invalid Email');
+        }
+        else if (!password_regex.test(sign_up_password)) {
+            alert('Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character');
+        }
+        else if (sign_up_password !== conf_password) {
+            alert('Passwords do not match');
+        }
+        else {
+            try {
+                const response = await fetch("http://localhost:5000/api/signup", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: sign_up_email,
+                        username: username,
+                        password: sign_up_password
+                    })
+                })
+
+                if (response.ok) {
+                    alert("Account Created Successfully");
+                }
+            }
+            catch (error) {
+                console.log('Error signing up:', error);
+                alert("Got error while signing up");
+            }
+        }
+    }
+</script>
+
+</html>

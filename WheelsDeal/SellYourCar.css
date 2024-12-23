@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 150vh;
+    /* background-color: wheat; */
+    background-color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav{
+    background-color: white;
+    /* color: black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    /* height: 300px; */
+    transition: 0.6s;
+    z-index: 1;
+}
+
+nav .logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(26, 43, 62);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+nav ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li{
+    position: relative;
+    list-style: none;
+}
+
+nav ul li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(20, 30, 48);
+    letter-spacing: 2px;
+    transition: 0.6s;
+    font-weight: 500px;
+}
+
+nav.sticky{
+    /* opacity: 0.7; */
+    padding: 15px 80px;
+    background-color: white;
+}
+
+p{
+    position: relative;
+    padding-top: 7%;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 25px 0px 35px;
+    padding-left: 80px;
+}
+
+p span{
+    color: rgb(18, 45, 75);
+}
+
+h2{
+    position: relative;
+    /* padding-top: 2%; */
+    padding-left: 80px;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 0px 0px 35px;
+}
+
+form{
+    background-color: white;
+    border: 2px solid black;
+    width: 500px;
+    margin-left: 33%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 5px 10px 25px rgba(85, 85, 85, 0.467);
+}
+
+input, select{
+    margin-top: 10px;
+    width: 450px;
+    height: 30px;
+}
+
+button{
+    background-color: rgb(26, 43, 62);
+    color: white;
+    height: 45px;
+    width: 150px;
+    margin-left: 120px;
+    transform: translateY(-15%);
+    /* margin-bottom: -1.2%; */
+}
+
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(20, 25, 30);
+}

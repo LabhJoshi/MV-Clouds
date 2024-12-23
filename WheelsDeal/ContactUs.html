@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="ContactUs.css">
+</head>
+
+<body>
+    <div>
+        <nav>
+            <a href="Home.html" class="logo">WheelsDeal</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="#">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="column">
+            <div class="form">
+                <!-- First Row -->
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="first-name">First Name:- </label>
+                        <input type="text" id="first-name">
+                    </div>
+                    <div class="form-column">
+                        <label for="last-name">Last Name:- </label>
+                        <input type="text" id="last-name">
+                    </div>
+                </div>
+                <!-- Second Row -->
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="email">Email:- </label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="form-column">
+                        <label for="Phone">Phone Number:- </label>
+                        <input type="text" id="Phone">
+                    </div>
+                </div>
+                <!-- Third Row -->
+                <div class="form-row">
+                    <div class="textarea-container">
+                        <label for="comment">What do you have in mind</label>
+                        <textarea name="comment" id="comment" placeholder="Please enter query"></textarea>
+                    </div>
+                </div>
+                <button onclick="handleSubmit()">Submit</button>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <h2>Contact Us</h2>
+                <p>Have some questions ?? Do not worry, just drop your queries with your Email and Contact Number our
+                    team will reach to you shortly. Till then you can check out our big collections of affordable Cars.
+                </p>
+                <div class="icons">
+                    <div class="i-columns"><ion-icon name="call-outline"></ion-icon><span>+91 7600874618</span></div>
+                    <div class="i-columns"><ion-icon name="mail-outline"></ion-icon><span>labhjoshi25@gmail.com</span>
+                    </div>
+                    <div class="i-columns"><ion-icon name="location-outline"></ion-icon><span>Ahmedabad, Gujarat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    async function handleSubmit() {
+        var first_name = document.getElementById('first-name');
+        var last_name = document.getElementById('last-name');
+        var email = document.getElementById('email');
+        var phone = document.getElementById('Phone');
+        var comment = document.getElementById('comment');
+
+        if (!first_name.value || !last_name.value || !email.value || !phone.value || !comment.value) {
+            alert('Please fill all the fields');
+            return;
+        }
+
+        else{
+            try{
+                const response = await fetch('http://localhost:5000/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        first_name: first_name.value,
+                        last_name: last_name.value,
+                        email: email.value,
+                        phone: phone.value,
+                        comment: comment.value
+                    })
+                });
+                
+                if(response.ok){
+                    window.location.href = 'Home.html';
+                    alert("Thank you for contacting us, we will reach out to you shortly.");
+                }
+            }
+            catch(error){
+                console.log('Error submitting form:', error);
+            }
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        var nav = document.querySelector('nav');
+        nav.classList.toggle('sticky', window.scrollY > 0);
+    });
+
+    var email = localStorage.getItem('email');
+    if (email) {
+        document.querySelector('nav ul').innerHTML = `
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="#">Browse Cars</a></li>
+            <li><a href="SellYourCar.html">Sell your Car</a></li>
+            <li><a href="ContactUs">Contact Us</a></li>
+            <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
+        `;
+    }
+
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>

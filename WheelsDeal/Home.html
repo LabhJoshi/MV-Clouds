@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+
+<body>
+    <div>
+        <nav>
+            <a href="Home.html" class="logo">WheelsDeal</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="#">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <video autoplay loop muted>
+            <source src="background_video.mp4" type="video/mp4">
+            not supported
+        </video>
+        <h2>
+            Where Deals Meet Wheels.
+        </h2>
+    </div>
+
+    <section class="popular_sells">
+        <h2>Trending Cars</h2>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
+            <div id="cars-container" class="carousel">
+                <!-- Cards will be appended here by JavaScript -->
+            </div>
+            <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+
+        <h2>Popular Cars</h2>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
+            <div id="popular-cars-container" class="carousel">
+                <!-- Cards will be appended here by JavaScript -->
+            </div>
+            <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+
+        <h2>Upcoming Cars</h2>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
+            <div id="upcoming-cars-container" class="carousel">
+                <!-- Cards will be appended here by JavaScript -->
+            </div>
+            <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            var nav = document.querySelector('nav');
+            nav.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        var email = localStorage.getItem('email');
+        if(email){
+            document.querySelector('nav ul').innerHTML = `
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="#">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs">Contact Us</a></li>
+                <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
+            `;
+        }
+
+        async function fetchCars() {
+            try {
+                const response_one = await fetch('http://localhost:5000/api/trending_cars');
+                const trending_cars = await response_one.json();
+                const cars_container = document.getElementById('cars-container');
+                trending_cars.forEach(car => {
+                    const car_card = document.createElement('div');
+                    car_card.classList.add('car-card');
+                    car_card.innerHTML = `
+                        <img src="${car.image_url}" alt="${car.car_name}">
+                        <h3>${car.car_name}</h3>
+                        <div class="car-details">
+                            <div class="column">
+                                <p>Price: ${car.sell_price}</p>
+                                <p>Fuel Type: ${car.fuel_type}</p>
+                            </div>
+                            <div class="column">
+                                <p>Transmission: ${car.transmission_type}</p>
+                                <p>Year: ${car.mfg_year}</p>
+                            </div>
+                        </div>
+                        <button onclick="redirectToDetails(${car.car_id})">View Details</button>
+                    `;
+                    cars_container.appendChild(car_card);
+                });
+
+                const response_two = await fetch('http://localhost:5000/api/popular_cars');
+                const popular_cars = await response_two.json();
+                const popular_cars_container = document.getElementById('popular-cars-container');
+                popular_cars.forEach(car => {
+                    const car_card = document.createElement('div');
+                    car_card.classList.add('car-card');
+                    car_card.innerHTML = `
+                        <img src="${car.image_url}" alt="${car.car_name}">
+                        <h3>${car.car_name}</h3>
+                        <div class="car-details">
+                            <div class="column">
+                                <p>Price: ${car.sell_price}</p>
+                                <p>Fuel Type: ${car.fuel_type}</p>
+                            </div>
+                            <div class="column">
+                                <p>Transmission: ${car.transmission_type}</p>
+                                <p>Year: ${car.mfg_year}</p>
+                            </div>
+                        </div>
+                        <button onclick="redirectToDetails(${car.car_id})">View Details</button>
+                    `;
+                    popular_cars_container.appendChild(car_card);
+                });
+
+                const response_three = await fetch('http://localhost:5000/api/upcoming_cars');
+                const upcoming_cars = await response_three.json();
+                const upcoming_cars_container = document.getElementById('upcoming-cars-container');
+                upcoming_cars.forEach(car => {
+                    const car_card = document.createElement('div');
+                    car_card.classList.add('car-card');
+                    car_card.innerHTML = `
+                        <img src="${car.image_url}" alt="${car.car_name}">
+                        <h3>${car.car_name}</h3>
+                        <div class="car-details">
+                            <div class="column">
+                                <p>Price: ${car.sell_price}</p>
+                                <p>Fuel Type: ${car.fuel_type}</p>
+                            </div>
+                            <div class="column">
+                                <p>Transmission: ${car.transmission_type}</p>
+                                <p>Year: ${car.mfg_year}</p>
+                            </div>
+                        </div>
+                        <button onclick="redirectToDetails(${car.car_id})">View Details</button>
+                    `;
+                    upcoming_cars_container.appendChild(car_card);
+                });
+
+            } catch (error) {
+                console.error('Error fetching cars:', error);
+            }
+        }
+
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.carousel');
+            const cardWidth = document.querySelector('.car-card').offsetWidth;
+            carousel.scrollBy({
+                left: direction * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        function redirectToDetails(carId) {
+            window.location.href = `car_details.html?car_id=${carId}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchCars);
+    </script>
+</body>
+
+</html>

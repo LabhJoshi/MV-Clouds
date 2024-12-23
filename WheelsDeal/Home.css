@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* min-height: 200vh; */
+    /* background-color: wheat; */
+    background-color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav{
+    background-color: white;
+    /* color: black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    /* height: 300px; */
+    transition: 0.6s;
+    z-index: 1;
+}
+
+nav .logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(26, 43, 62);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+nav ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li{
+    position: relative;
+    list-style: none;
+}
+
+nav ul li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(20, 30, 48);
+    letter-spacing: 2px;
+    transition: 0.6s;
+    font-weight: 500px;
+}
+
+nav.sticky{
+    opacity: 0.7;
+    padding: 15px 80px;
+    background-color: white;
+}
+
+.container{
+    width: 100%;
+    height: calc(100vh - 80px);
+    position: relative;
+    top: 80px;
+}
+
+.container video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.container h2{
+    font-family: 'Times New Roman', Times, serif;
+    width: 750px;
+    top: 77%;
+    left: 31.5%;
+    position: relative;
+    color: transparent;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: white;
+    font-size: 50px;
+}
+
+
+.popular_sells{
+    margin-top: 150px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.popular_sells h2{
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 1px;
+    color: rgb(26, 43, 62);
+    margin-top: 30px;
+    /* bottom: -50%; */
+    /* margin-bottom: 50px; */
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 2;
+    padding-bottom: 5px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+.car-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    background-color: #fff;
+    min-width: 300px;
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+}
+
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.car-card h3 {
+    margin: 16px 0 8px;
+    font-size: 1.3em;
+    color: rgb(26, 43, 62);
+}
+
+.car-details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.car-details .column {
+    flex: 1;
+    padding: 0 2px;
+    font-size: 0.9em;
+}
+
+.car-card p {
+    margin: 4px 0;
+    color: #666;
+}
+
+.car-card button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(26, 43, 62);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.car-card button:hover {
+    background-color: rgb(20, 30, 48);
+}
+
+#cars-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 20px;
+}

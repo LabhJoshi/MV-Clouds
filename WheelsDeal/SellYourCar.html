@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car</title>
+    <link rel="stylesheet" href="SellYourCar.css">
+</head>
+
+<body>
+    <div>
+        <nav>
+            <a href="Home.html" class="logo">WheelsDeal</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="#">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <p>You'll get best price for your <span>Vehicle</span> here,</p><br>
+        <h2>Please, Fill up the given form:- </h2>
+
+        <form onsubmit="handleSubmit(event)">
+            <label for="name" style="margin-top: 10px;">Enter Name:- </label><input type="text" id="name" required><br>
+            <label for="number">Enter Contact number:- </label><input type="text" id="number" required><br>
+            <label for="email">Enter Email:- </label><input type="email" id="email" required><br>
+            <label for="car-namme">Enter Car Name:- </label><input type="text" id="car-name" required><br>
+            <label for="price">Enter Selling Price:- </label><input type="number" id="price" required><br>
+            <label for="fuel-type">Fuel Type:- </label>
+            <select name="fuel" id="fuel-type">
+                <option value="select">--select--</option>
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="cng">CNG</option>
+                <option value="electric">EV</option>
+            </select><br>
+            <label for="transmission">Transmission:- </label>
+            <select name="transmission" id="transmission">
+                <option value="select">--select--</option>
+                <option value="manual">Manual</option>
+                <option value="automatic">Automatic</option>
+            </select><br>
+            <label for="year">Year of Purchase:- </label><input type="number" id="year" required><br>
+            <label for="image">Upload your Car's photo:- </label><input type="file" id="image"><br>
+            <!-- <button onsubmit="handleSubmit(e)">Submit</button> -->
+             <input type="submit">
+        </form>
+    </div>
+
+</body>
+<script>
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        var name = document.getElementById('name').value;
+        var number = document.getElementById('number').value;
+        var email = document.getElementById('email').value;
+        var car_name = document.getElementById('car-name').value;
+        var price = document.getElementById('price').value;
+        var fuel = document.getElementById('fuel-type').value;
+        var transmission = document.getElementById('transmission').value;
+        var year = document.getElementById('year').value;
+        var image = document.getElementById('image').files[0];
+
+        if (!name || !number || !email || !car_name || !price || !fuel || !transmission || !year ) {
+            alert('Please fill all the fields');
+            return;
+        }
+
+        else{
+            try{
+                const response = await fetch('http://localhost:5000/api/sell', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        number: number,
+                        email: email,
+                        car_name: car_name,
+                        price: price,
+                        fuel: fuel,
+                        transmission: transmission,
+                        year: year,
+                        image: image
+                    })
+                });
+
+                if(response.ok){
+                    window.location.href = 'Home.html';
+                    alert("We've added your car to our selling list !!!");
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
+        }
+    }    
+
+    window.addEventListener('scroll', () => {
+        var nav = document.querySelector('nav');
+        nav.classList.toggle('sticky', window.scrollY > 0);
+    });
+
+    var email = localStorage.getItem('email');
+    if (email) {
+        document.querySelector('nav ul').innerHTML = `
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="#">Browse Cars</a></li>
+            <li><a href="SellYourCar.html">Sell your Car</a></li>
+            <li><a href="ContactUs">Contact Us</a></li>
+            <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
+        `;
+    }
+</script>
+
+</html>
