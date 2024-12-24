@@ -14,7 +14,7 @@
             <a href="Home.html" class="logo">WheelsDeal</a>
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="#">Browse Cars</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
                 <li><a href="SellYourCar.html">Sell your Car</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="Login.html">Login</a></li>
@@ -71,9 +71,9 @@
         if(email){
             document.querySelector('nav ul').innerHTML = `
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="#">Browse Cars</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
                 <li><a href="SellYourCar.html">Sell your Car</a></li>
-                <li><a href="ContactUs">Contact Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
             `;
         }
@@ -167,7 +167,7 @@
         }
 
         function redirectToDetails(carId) {
-            window.location.href = `car_details.html?car_id=${carId}`;
+            window.location.href = `CarDetails.html?car_id=${carId}`;
         }
 
         document.addEventListener('DOMContentLoaded', fetchCars);

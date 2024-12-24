@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* min-height: 200vh; */
+    /* background-color: wheat; */
+    background-color: #1e262f;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav{
+    background-color:#afc4d2;
+    /* color: black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    /* height: 300px; */
+    transition: 0.6s;
+    z-index: 1;
+}
+
+nav .logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(26, 43, 62);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+nav ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li{
+    position: relative;
+    list-style: none;
+}
+
+nav ul li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(20, 30, 48);
+    letter-spacing: 2px;
+    transition: 0.6s;
+    font-weight: 500px;
+}
+
+nav.sticky{
+    padding: 15px 80px;
+    background-color: #afc4d2;
+}
+
+h2{
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    color: #afc4d2;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 8.5%;
+}
+
+.selector{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    height: 5%;
+    width: 25%;
+    background-color: white;
+}
+
+#search{
+    border: none;
+    background-color: inherit;
+    padding-right: 140px;
+    height: 80%;
+    /* font-size: 0px; */
+    /* position: fixed; */
+    /* height: fit-content;
+    width: 30%; */
+}
+
+button{
+    background-color: inherit;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.selector ion-icon{
+    color: #1e262f;
+    margin-left: 25px;
+    font-size: 2em;
+    /* color: black; */
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 20px;
+    /* margin-top: 7%;
+    margin-left: 16%; */
+    margin: 7% 17%;
+}
+
+.car-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-card h3 {
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.car-details .column {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card button {
+    background-color: #1e262f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.car-card button:hover {
+    background-color: #0f161e;
+    color: white;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}

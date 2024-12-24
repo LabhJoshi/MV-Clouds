@@ -7,12 +7,12 @@
 body {
     /* min-height: 200vh; */
     /* background-color: wheat; */
-    background-color: whitesmoke;
+    background-color: #1e262f;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 nav {
-    background-color: white;
+    background-color: #afc4d2;
     /* color: black; */
     position: fixed;
     top: 0;
@@ -61,9 +61,9 @@ nav ul li a {
 }
 
 nav.sticky {
-    opacity: 0.7;
+    /* opacity: 0.7; */
     padding: 15px 80px;
-    background-color: white;
+    background-color: #afc4d2;
 }
 
 .container {
@@ -79,10 +79,11 @@ nav.sticky {
     padding: 0 30px;
     font-size: 0.9em;
     position: relative;
+    color: #afc4d2;
 }
 
 .column:first-child {
-    border-right: 2px solid rgb(26, 43, 62);
+    border-right: 2px solid #afc4d2;
     margin-right: 20px;
     padding-right: 40px;
 }
@@ -130,8 +131,8 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: rgb(26, 43, 62);
-    color: white;
+    background-color: #afc4d2;
+    color: black;
     border: none;
     cursor: pointer;
     align-self: flex-start;
@@ -150,7 +151,7 @@ h2 {
 p {
     font-size: 15px;
     font-weight: 100;
-    color: #777;
+    color: #AAA;
     line-height: 30px;
     padding: 20px 0px;
 }
@@ -165,7 +166,7 @@ p {
 
 ion-icon {
     font-size: 35px;
-    color: rgb(26, 43, 62);
+    color: #afc4d2;
     padding: 30px 0px;
     margin-bottom: -6.1%;
 }
@@ -173,5 +174,5 @@ ion-icon {
 span {
     margin-left: 30px;
     font-size: 16px;
-    color: #777;
+    color: #AAA;
 }

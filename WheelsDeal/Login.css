@@ -6,7 +6,7 @@
 
 body {
     height: 100vh;
-    background: rgb(246, 245, 247);
+    background: #1e262f;
     display: grid;
     place-content: center;
     font-family: 'Poppins', sans-serif;
@@ -16,8 +16,8 @@ body {
     position: relative;
     width: 850px;
     height: 500px;
-    background-color: white;
-    box-shadow: 25px 30px 55px rgba(85, 85, 85, 0.467);
+    background-color: #afcfe9;
+    box-shadow: 5px 10px 25px rgba(85, 85, 85, 0.467);
     border-radius: 13px;
     overflow: hidden;
 }
@@ -74,7 +74,7 @@ label{
     transform: translateX(-50%);
     width: 0%;
     height: 2px;
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+    background: linear-gradient(to right, #afc4d2, rgb(36, 59, 85));
     transition: 0.3s;
 }
 
@@ -86,7 +86,7 @@ input:focus ~ label{
 button{
     border-radius: 20px;
     border: 1px solid rgb(20, 30, 48);
-    background: rgb(36, 59, 85);
+    background: rgb(27, 52, 81);
     color: white;
     font-size: 12px;
     padding: 12px 45px;
@@ -101,6 +101,7 @@ button{
 
 .form-container button:hover{
     background: white;
+    cursor: pointer;
     color: rgb(20, 30, 48);
 }
 
@@ -130,7 +131,7 @@ button{
 
 .overlay{
     position: relative;
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(26, 43, 62));
+    background: linear-gradient(to right, #053759, #012136);
     color: white;
     left: -150%;
     height: 100%;

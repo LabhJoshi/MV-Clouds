@@ -14,7 +14,7 @@
             <a href="Home.html" class="logo">WheelsDeal</a>
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="#">Browse Cars</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
                 <li><a href="SellYourCar.html">Sell your Car</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="Login.html">Login</a></li>
@@ -31,7 +31,7 @@
             <label for="number">Enter Contact number:- </label><input type="text" id="number" required><br>
             <label for="email">Enter Email:- </label><input type="email" id="email" required><br>
             <label for="car-namme">Enter Car Name:- </label><input type="text" id="car-name" required><br>
-            <label for="price">Enter Selling Price:- </label><input type="number" id="price" required><br>
+            <label for="price">Enter Selling Price:- </label><input type="number" id="price" min="50000" required><br>
             <label for="fuel-type">Fuel Type:- </label>
             <select name="fuel" id="fuel-type">
                 <option value="select">--select--</option>
@@ -46,10 +46,10 @@
                 <option value="manual">Manual</option>
                 <option value="automatic">Automatic</option>
             </select><br>
-            <label for="year">Year of Purchase:- </label><input type="number" id="year" required><br>
+            <label for="year">Year of Purchase:- </label><input type="number" id="year" min="2000" required><br>
             <label for="image">Upload your Car's photo:- </label><input type="file" id="image"><br>
             <!-- <button onsubmit="handleSubmit(e)">Submit</button> -->
-             <input type="submit">
+             <input type="submit" id="submit">
         </form>
     </div>
 
@@ -68,9 +68,15 @@
         var transmission = document.getElementById('transmission').value;
         var year = document.getElementById('year').value;
         var image = document.getElementById('image').files[0];
+        var email_regex = /[0-9a-z._]+@[a-z0-9.-]+\.[a-z]{2,6}/g;
 
         if (!name || !number || !email || !car_name || !price || !fuel || !transmission || !year ) {
             alert('Please fill all the fields');
+            return;
+        }
+
+        else if(!email_regex.test(email)){
+            alert("Invalid Email!!!");
             return;
         }
 
@@ -113,9 +119,9 @@
     if (email) {
         document.querySelector('nav ul').innerHTML = `
             <li><a href="Home.html">Home</a></li>
-            <li><a href="#">Browse Cars</a></li>
+            <li><a href="BrowseCars.html">Browse Cars</a></li>
             <li><a href="SellYourCar.html">Sell your Car</a></li>
-            <li><a href="ContactUs">Contact Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
             <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
         `;
     }

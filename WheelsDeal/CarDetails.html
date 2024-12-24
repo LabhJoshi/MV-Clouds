@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <link rel="stylesheet" href="CarDetails.css">
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="Home.html" class="logo">WheelsDeal</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="car-details-container">
+        <div class="car-image">
+            <h2 id="car-name"></h2>
+            <img id="car-image" src="" alt="Car Image" width="300">
+        </div>
+        <div class="car-info">
+            <p><strong>Price:</strong> <span id="car-price"></span></p>
+            <p><strong>Fuel Type:</strong> <span id="car-fuel"></span></p>
+            <p><strong>Transmission:</strong> <span id="car-transmission"></span></p>
+            <p><strong>Year:</strong> <span id="car-year"></span></p>
+            <p><strong>Description:</strong> <span id="car-description"></span></p>
+        </div>
+    </div>
+
+</body>
+<script>
+    window.addEventListener('scroll', () => {
+        var nav = document.querySelector('nav');
+        nav.classList.toggle('sticky', window.scrollY > 0);
+    });
+
+    var email = localStorage.getItem('email');
+    if(email){
+        document.querySelector('nav ul').innerHTML = `
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="BrowseCars.html">Browse Cars</a></li>
+            <li><a href="SellYourCar.html">Sell your Car</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
+        `;
+    }
+
+    async function getCarDetails(){
+        var url = new URL(window.location.href);
+        var car_id = url.searchParams.get('car_id');
+
+        var car = await fetch(`http://localhost:5000/api/car_details?car_id=${car_id}`);
+        var car_details = await car.json();
+        console.log(car_details);
+
+        if (car_details.length > 0) {
+            var car = car_details[0];
+            document.getElementById('car-image').src = car.image_url;
+            document.getElementById('car-name').textContent = car.car_name;
+            document.getElementById('car-price').textContent = car.sell_price;
+            document.getElementById('car-fuel').textContent = car.fuel_type;
+            document.getElementById('car-transmission').textContent = car.transmission_type;
+            document.getElementById('car-year').textContent = car.mfg_year;
+            document.getElementById('car-description').textContent = `This car has a ${car.fuel_type} engine and ${car.transmission_type} transmission.`;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getCarDetails();
+    });
+</script>
+</html>

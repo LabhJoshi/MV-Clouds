@@ -14,7 +14,7 @@
             <a href="Home.html" class="logo">WheelsDeal</a>
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="#">Browse Cars</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
                 <li><a href="SellYourCar.html">Sell your Car</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
                 <li><a href="Login.html">Login</a></li>
@@ -82,9 +82,15 @@
         var email = document.getElementById('email');
         var phone = document.getElementById('Phone');
         var comment = document.getElementById('comment');
+        var email_regex = /[0-9a-z._]+@[a-z0-9.-]+\.[a-z]{2,6}/g;
 
         if (!first_name.value || !last_name.value || !email.value || !phone.value || !comment.value) {
             alert('Please fill all the fields');
+            return;
+        }
+
+        else if(!email_regex.test(email)){
+            alert("Invalid Email!!!");
             return;
         }
 
@@ -124,9 +130,9 @@
     if (email) {
         document.querySelector('nav ul').innerHTML = `
             <li><a href="Home.html">Home</a></li>
-            <li><a href="#">Browse Cars</a></li>
+            <li><a href="BrowseCars.html">Browse Cars</a></li>
             <li><a href="SellYourCar.html">Sell your Car</a></li>
-            <li><a href="ContactUs">Contact Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
             <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
         `;
     }

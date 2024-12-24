@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Cars</title>
+    <link rel="stylesheet" href="BrowseCars.css">
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="Home.html" class="logo">WheelsDeal</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="BrowseCars.html">Browse Cars</a></li>
+                <li><a href="SellYourCar.html">Sell your Car</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h2>Search For Car:</h2><br>
+    <div class="selector">
+        <input type="text" id="search" placeholder="Search for cars...">
+        <button onclick="searchForCar()">
+            <ion-icon name="search-outline"></ion-icon>
+        </button>
+    </div>
+    <div id="car-grid" class="car-grid">
+        <!-- Car cards will be appended here by JavaScript -->
+    </div>
+
+</body>
+<script>
+    window.addEventListener('scroll', () => {
+        var nav = document.querySelector('nav');
+        nav.classList.toggle('sticky', window.scrollY > 0);
+    });
+
+    var email = localStorage.getItem('email');
+    if(email){
+        document.querySelector('nav ul').innerHTML = `
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="BrowseCars.html">Browse Cars</a></li>
+            <li><a href="SellYourCar.html">Sell your Car</a></li>
+            <li><a href="ContactUs">Contact Us</a></li>
+            <li><a href="Home.html" onclick="localStorage.clear()">Logout</a></li>
+        `;
+    }
+
+    async function searchForCar(){
+        console.log('searching for car');
+        var search = document.getElementById('search').value;
+        var cars = await fetch(`http://localhost:5000/api/search?name=${search}`);
+        cars = await cars.json();
+        console.log(cars);
+
+        const carGrid = document.getElementById('car-grid');
+        carGrid.innerHTML = ''; // Clear previous results
+        cars.forEach(car => {
+            const carCard = document.createElement('div');
+            carCard.classList.add('car-card');
+            carCard.innerHTML = `
+                <img src="${car.image_url}" alt="${car.car_name}">
+                <h3>${car.car_name}</h3>
+                <div class="car-details">
+                    <div class="column">
+                        <p>Price: ${car.sell_price}</p>
+                        <p>Fuel Type: ${car.fuel_type}</p>
+                    </div>
+                    <div class="column">
+                        <p>Transmission: ${car.transmission_type}</p>
+                        <p>Year: ${car.mfg_year}</p>
+                    </div>
+                </div>
+                <button onclick="redirectToDetails(${car.car_id})">View Details</button>
+            `;
+            carGrid.appendChild(carCard);
+        });
+    }
+
+    function redirectToDetails(carId) {
+        window.location.href = `CarDetails.html?car_id=${carId}`;
+    }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>

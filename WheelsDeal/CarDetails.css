@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* min-height: 150vh; */
+    /* background-color: wheat; */
+    background-color: #e2ceb1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav{
+    background-color: white;
+    /* color: black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    /* height: 300px; */
+    transition: 0.6s;
+    z-index: 1;
+    box-shadow: 5px 10px 25px rgba(170, 169, 169, 0.467);
+}
+
+nav .logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(26, 43, 62);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+nav ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li{
+    position: relative;
+    list-style: none;
+}
+
+nav ul li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(20, 30, 48);
+    letter-spacing: 2px;
+    transition: 0.6s;
+    font-weight: 500px;
+}
+
+nav.sticky{
+    /* opacity: 0.7; */
+    padding: 15px 80px;
+    background-color: white;
+}
+
+.car-details-container {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    /* color: #fffef2; */
+    box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.467);
+    /* border-radius: 5px; */
+}
+.car-image {
+    margin-left: 5px;
+    margin-right: 20px;
+    /* padding-right: 5px; */
+}
+
+.car-image h2{
+    font-size: 40px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    /* fontf */
+}
+
+.car-image img{
+    border-radius: 5px;
+    width: 700px;
+    height: 400px;
+}
+
+.car-info {
+    /* border: 1px solid black; */
+    display: grid;
+    margin-top: 5%;
+    margin-left: 7%;
+    row-gap: 40px;
+    width: 35em;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+.car-info h2 {
+    margin-top: 0;
+}
