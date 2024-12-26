@@ -81,6 +81,7 @@
 
         try {
             const response = await fetch("http://localhost:5000/api/login");
+            console.log('here')
             const data = await response.json();
             console.log(data)
 
@@ -140,6 +141,7 @@
                 })
 
                 if (response.ok) {
+                    window.location.href='Login.html';
                     alert("Account Created Successfully");
                 }
             }

@@ -52,6 +52,7 @@
     async function searchForCar(){
         console.log('searching for car');
         var search = document.getElementById('search').value;
+        search = search.charAt(0).toUpperCase()+String(search).slice(1);
         var cars = await fetch(`http://localhost:5000/api/search?name=${search}`);
         cars = await cars.json();
         console.log(cars);

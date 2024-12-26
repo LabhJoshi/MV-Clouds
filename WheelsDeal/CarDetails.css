@@ -7,11 +7,11 @@
 body{
     /* min-height: 150vh; */
     /* background-color: wheat; */
-    background-color: #e2ceb1;
+    background-color: #1e262f;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 nav{
-    background-color: white;
+    background-color: #afc4d2;
     /* color: black; */
     position: fixed;
     top: 0;
@@ -74,7 +74,7 @@ nav.sticky{
     padding: 10px 10px;
     display: flex;
     align-items: flex-start;
-    background-color: white;
+    background-color: #afc4d2;
     /* color: #fffef2; */
     box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.467);
     /* border-radius: 5px; */

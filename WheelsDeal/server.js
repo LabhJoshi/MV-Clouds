@@ -4,7 +4,6 @@ const app = exp();
 const path = require('path');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
-var count=100;
 
 const pool = new Pool({
     user: 'postgres',
@@ -49,7 +48,7 @@ app.get('/api/upcoming_cars', async (req, res) => {
 });
 
 app.post('/api/signup', async (req, res) => {
-    var count=101;
+    var count=1002;
     const { email, username, password } = req.body;
     try {
         const result = await pool.query('INSERT INTO Users (user_id, email, username, password) VALUES ($1, $2, $3, $4)', [count, email, username, password]);
@@ -88,7 +87,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 app.post('/api/sell', async (req, res) => {
-    var count=101;
+    var count=1001;
     const { name, number, email, car_name, price, fuel, transmission, year, image } = req.body;
 
     try {
