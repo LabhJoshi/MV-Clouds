@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-9 Task</title>
+    <style>
+        .circle-1 {
+            height: 280px;
+            width: 280px;
+            border-radius: 50%;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .circle-2 {
+            height: 280px;
+            width: 280px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            cursor: grab;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle-1" id="circle-1"></div>
+    <div class="circle-2" draggable="true" id="circle-2"></div>
+
+    <script>
+        var circle_1 = document.getElementById('circle-1');
+        var circle_2 = document.getElementById('circle-2');
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            var color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        circle_2.addEventListener('dragstart', function (e) {
+            e.dataTransfer.setData('text', e.target.id);
+        });
+
+        circle_1.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        });
+
+        circle_1.addEventListener('drop', function (e) {
+            e.preventDefault();
+            let c = 1;
+            console.log("Drop event");
+            var current_size = parseInt(e.target.style.height);
+
+            if (e.target.style.height === '') {
+                current_size = 280;
+                c++;
+            }
+
+            else if (c == 2 && current_size === '') {
+                current_size = 260;
+            }
+
+            var new_size = current_size - 20;
+            console.log(new_size);
+
+            circle_2.style.height = new_size + 'px';
+            circle_2.style.width = new_size + 'px';
+            circle_2.style.backgroundColor = e.target.backgroundColor;
+
+            circle_1.appendChild(circle_2);
+
+            var new_circle = document.createElement('div');
+            new_circle.className = 'circle-2';
+            new_circle.draggable = true;
+            new_circle.style.height = '280px';
+            new_circle.style.width = '280px';
+            new_circle.style.backgroundColor = getRandomColor();
+            new_circle.style.position = 'absolute';
+
+            document.body.appendChild(new_circle);
+            circle_2 = new_circle;
+            
+        });
+    </script>
+</body>
+
+</html>
